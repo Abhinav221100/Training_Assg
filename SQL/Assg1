@@ -1,0 +1,75 @@
+create database sqlassg1
+
+use sqlassg1
+go
+
+create table Product
+(
+	Id int NOT NULL Primary Key,
+	ProductName nvarchar(50),
+	UnitPrice decimal(12,2),
+	Package nvarchar(30),
+	IsDiscontinued bit
+)
+
+create table Customer
+(
+	Id int Not null Primary Key,
+	FirstName nvarchar(40),
+	LastName nvarchar(40),
+	City nvarchar(40),
+	Country nvarchar(40),
+	Phone nvarchar(20),
+)
+
+create table [Order]
+(
+	Id int Not null Primary Key,
+	OrderDate datetime,
+	OrderNumber nvarchar(10),
+	CustomerId int,
+	TotalAmount decimal(12,2)
+	constraint Order_CustomerId_FK Foreign Key (CustomerId) references Customer(Id)
+)
+
+create table OrderItem
+(
+	Id int Not null Primary Key,
+	OrderId int,
+	ProductId int,
+	UnitPrice decimal(12,2),
+	Quantity int
+	constraint OrderItem_OrderId_FK Foreign Key (OrderId) references [Order](Id),
+	constraint OrderItem_ProductId_FK Foreign Key (ProductId) references Product(Id)
+)
+
+insert into [Order] values (1,2022-02-13,2944,2,4200)
+insert into [Order] values (2,2022-01-03,1444,1,3600)
+insert into [Order] values (3,2022-03-17,3662,2,3000)
+insert into [Order] values (4,2022-06-28,2475,4,2700)
+insert into [Order] values (5,2022-04-20,5746,3,4000)
+insert into [Order] values (6,2022-05-09,9573,1,1500)
+
+insert into Product values (1,'Mouse',200,'semi',0)
+insert into Product values (2,'Keyboard',350,'full',1)
+insert into Product values (3,'Headphone',900,'semi',1)
+insert into Product values (4,'Book',15,'full',0)
+insert into Product values (5,'Lamp',150,'semi',1)
+insert into Product values (6,'Pen',10,'full',0)
+
+insert into OrderItem values (1,2,1,200,16)
+insert into OrderItem values (2,3,4,15,200)
+insert into OrderItem values (3,4,3,900,3)
+insert into OrderItem values (4,5,2,350,11)
+insert into OrderItem values (5,6,5,150,10)
+insert into OrderItem values (6,1,6,10,420)
+
+alter table Customer alter column FirstName nvarchar(40) NOT null
+
+alter table [Order] alter column OrderDate datetime Not null
+
+Select * from Customer
+
+Select Country from Customer where Country like 'A%' or Country like 'I%'
+
+Select FirstName+' '+LastName as FullName from Customer where FirstName like '__i%'
