@@ -1,0 +1,19 @@
+git branch js-assignments
+git checkout js-assignments
+touch file5.js file6.js
+git add file5.js file6.js
+git commit -m "adding js files"
+vi README.txt
+git commit -a -m "changes made to readme in js branch"
+git checkout master
+vi README.txt
+git commit -a -m "chnage made in readme in master branch"
+git checkout js-assignments
+vi file5.js
+vi file6.js
+git commit -a -m "made changes to js files"
+git checkout master
+git merge js-assignments
+vi README.txt
+git commit -a -m "resolved conflict"
+git branch -d js-assignments

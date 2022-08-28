@@ -1,0 +1,26 @@
+mkdir project_dir
+cd project_dir/
+git init
+touch index.html
+git status
+git add index.html
+git commit -m "First commit, adding index.html file"
+vi index.html
+touch info.txt
+git status
+touch .gitignore
+vi .gitignore
+git status
+git commit -a -m "made changes to index.html, adding .gitignore"
+git log
+vi index.html
+git checkout -- index.html
+vi index.html 
+git add index.html
+git status
+git restore --staged index.html
+alias my_add="git add"
+my_add index.html
+git commit -m "added title tag in index.html"
+git reset --soft HEAD~
+

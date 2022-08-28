@@ -1,0 +1,22 @@
+mkdir Assignments
+cd Assignments/
+vi README.txt
+git add README.txt
+git commit -m "adding README.txt"
+git branch html_assignments
+git checkout html_assignments
+touch file1.html file2.html
+git add file1.html file2.html
+git commit -m "Adding html files"
+vi file1.html
+vi file2.html
+git commit -a -m "added first lines to both html files"
+git checkout master
+vi README.txt
+git checkout html_assignments
+vi file1.html
+vi file2.html
+git commit -a -m "added 2nd lines to both html files"
+git checkout master
+git merge html_assignments
+git branch -d html_assignments

@@ -1,0 +1,20 @@
+git branch cdd-assignments
+git checkout cdd-assignments
+touch file3.css file4.css
+git add file3.css file4.css
+git commit -m "adding css files"
+vi README.txt
+git commit -a -m "added line 3 to readme"
+git checkout master
+vi README.txt
+git checkout cdd-assignments
+git commit -a -m "made changes to line1 in readme"
+git checkout cdd-assignments
+vi file3.css
+vi file4.css
+git commit -a -m "changes made to css files"
+git checkout master
+git merge cdd-assignments
+ls
+git branch -d cdd-assignments
+
