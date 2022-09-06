@@ -1,0 +1,12 @@
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\bin\Debug\net6.0\LitwareLib.deps.json
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\bin\Debug\net6.0\LitwareLib.dll
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\bin\Debug\net6.0\LitwareLib.pdb
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.csproj.AssemblyReference.cache
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.AssemblyInfoInputs.cache
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.AssemblyInfo.cs
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.csproj.CoreCompileInputs.cache
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.dll
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\refint\LitwareLib.dll
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\LitwareLib.pdb
+C:\Users\Toshiba\Desktop\Capgemini Docs\C#\LitwareLib\LitwareLib\obj\Debug\net6.0\ref\LitwareLib.dll
