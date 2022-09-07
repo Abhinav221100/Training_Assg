@@ -8,9 +8,20 @@ namespace EmployeeManagement
     {
         static void Main()
         {
-            Employee emp1 = new Employee(677, "Mark", 58000);
-            emp1.CalculateSalary();
-            emp1.DisplayGrossSalary();
+            Console.WriteLine("Enter the number of employees to be entered :");
+            int numOfEmployees = int.Parse(Console.ReadLine());
+            for (int i = 0; i < numOfEmployees; i++)
+            {
+                Console.WriteLine("Enter the employee number below :");
+                int employeeNumber = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the name of the employee below :");
+                string employeeName = Console.ReadLine();
+                Console.WriteLine("Enter the salary below :");
+                double employeeSalary = double.Parse(Console.ReadLine());
+                Employee emp1 = new Employee(employeeNumber, employeeName, employeeSalary);
+                emp1.CalculateSalary();
+                emp1.DisplayGrossSalary();
+            }
         }
     }
 }

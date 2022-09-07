@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toshiba\\Desktop\\Capgemini Docs\\C#\\LitwareLib\\LitwareLib\\LitwareLib.csproj",
+      "projectUniqueName": "C:\\Users\\Toshiba\\Desktop\\CG_Assg\\C#\\LitwareLib\\LitwareLib\\LitwareLib.csproj",
       "projectName": "LitwareLib",
-      "projectPath": "C:\\Users\\Toshiba\\Desktop\\Capgemini Docs\\C#\\LitwareLib\\LitwareLib\\LitwareLib.csproj",
+      "projectPath": "C:\\Users\\Toshiba\\Desktop\\CG_Assg\\C#\\LitwareLib\\LitwareLib\\LitwareLib.csproj",
       "packagesPath": "C:\\Users\\Toshiba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Toshiba\\Desktop\\Capgemini Docs\\C#\\LitwareLib\\LitwareLib\\obj\\",
+      "outputPath": "C:\\Users\\Toshiba\\Desktop\\CG_Assg\\C#\\LitwareLib\\LitwareLib\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
