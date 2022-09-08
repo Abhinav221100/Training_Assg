@@ -2,6 +2,28 @@
 
 namespace Assignment3
 {
+
+    public class StackOverflowException : ApplicationException
+    {
+        public override string Message
+        {
+            get
+            {
+                return "Buffer Overflow : Stack is full.";
+            }
+        }
+    }
+
+    public class StackUndeflowException : ApplicationException
+    {
+        public override string Message
+        {
+            get
+            {
+                return "Buffer Underflow : Stack is empty.";
+            }
+        }
+    }
     interface ICloneable
     {
         public int[] clone(int size, int[] stack);
@@ -15,19 +37,20 @@ namespace Assignment3
 
         public MyStack(int size)
         {
-            this.top =  -1;
+            this.top = -1;
             this.size = size;
-            this.stack = new int[size]; 
+            this.stack = new int[size];
         }
 
         public void push(int data)
         {
-            if(top+1>=size)
-            { 
-                Console.WriteLine("----------");
-                Console.WriteLine("WARNING : Buffer Overflow");
-                Console.WriteLine("----------");
-                return;
+            if (top + 1 >= size)
+            {
+                //Console.WriteLine("----------");
+                //Console.WriteLine("WARNING : Buffer Overflow");
+                //Console.WriteLine("----------");
+                //return;
+                throw new StackOverflowException();
             }
             top = top + 1;
             stack[top] = data;
@@ -38,12 +61,13 @@ namespace Assignment3
 
         public int pop()
         {
-            if(top == -1)
+            if (top == -1)
             {
-                Console.WriteLine("----------");
-                Console.WriteLine("WARNING : Buffer Underflow");
-                Console.WriteLine("----------");
-                return -99999;
+                //Console.WriteLine("----------");
+                //Console.WriteLine("WARNING : Buffer Underflow");
+                //Console.WriteLine("----------");
+                //return -99999;
+                throw new StackUndeflowException();
             }
             int value = stack[top];
             top = top - 1;

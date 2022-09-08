@@ -27,14 +27,14 @@ namespace Console_Assg3
                     {
                         Console.WriteLine("Enter a Valid option.");
                     }
-                    if(choice== 4)
+                    if (choice == 4)
                     {
                         break;
                     }
 
                 } while (choice != 1 && choice != 2 && choice != 3);
 
-                if(choice == 4)
+                if (choice == 4)
                 {
                     break;
                 }
@@ -47,18 +47,18 @@ namespace Console_Assg3
                         break;
                     case 2:
                         int value = stack1.pop();
-                        if(value == -99999)
-                        {
-                            break;
-                        }
-                        Console.WriteLine("The value popped is {0}\n",value);
+                        //if(value == -99999)
+                        //{
+                        //    break;
+                        //}
+                        Console.WriteLine("The value popped is {0}\n", value);
                         break;
                     case 3:
                         int[] clone = stack1.clone(sizeOfStack, stack1.stack);
                         int temp = stack1.top;
                         Console.WriteLine("----------");
                         Console.WriteLine("The Cloned Stack is as follows :");
-                        while(temp > -1)
+                        while (temp > -1)
                         {
                             Console.WriteLine(clone[temp]);
                             temp = temp - 1;
@@ -69,8 +69,8 @@ namespace Console_Assg3
                         break;
                 }
             } while (choice == 1 || choice == 2 || choice == 3);
-            
-            
+
+
         }
 
     }

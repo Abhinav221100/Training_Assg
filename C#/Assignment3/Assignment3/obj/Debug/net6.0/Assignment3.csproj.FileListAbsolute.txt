@@ -10,3 +10,15 @@ C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment3\Assignment3\obj\Debug\net
 C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment3\Assignment3\obj\Debug\net6.0\refint\Assignment3.dll
 C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.pdb
 C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment3\Assignment3\obj\Debug\net6.0\ref\Assignment3.dll
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\bin\Debug\net6.0\Assignment3.deps.json
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\bin\Debug\net6.0\Assignment3.dll
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\bin\Debug\net6.0\Assignment3.pdb
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.csproj.AssemblyReference.cache
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.AssemblyInfoInputs.cache
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.AssemblyInfo.cs
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.csproj.CoreCompileInputs.cache
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.dll
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\refint\Assignment3.dll
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\Assignment3.pdb
+C:\Users\Toshiba\Desktop\CG_Assg\C#\Assignment3\Assignment3\obj\Debug\net6.0\ref\Assignment3.dll
