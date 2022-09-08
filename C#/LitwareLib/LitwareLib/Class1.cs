@@ -13,8 +13,8 @@ namespace LitwareLib
         private int EmpNo;
         private string EmpName;
         private double salary;
-        double HRA, TA, DA, PF, TDS;
-        double NetSalary;
+        public double HRA, TA, DA, PF, TDS;
+        public double NetSalary;
         public double GrossSalary;
 
         //defining the properties of private members
@@ -122,11 +122,15 @@ namespace LitwareLib
             _foodAllowance = 0.13 * Salary;
             _otherAllowance = 0.03 * Salary;
 
+            PF = 0.1 * GrossSalary;
+            //TDS = 0.18 * GrossSalary;
             GrossSalary = GrossSalary + _petrolAllowance + _foodAllowance + _otherAllowance;
+            TDS = 0.18 * GrossSalary;
+            NetSalary = GrossSalary - (PF + TDS);
         }
     }
 
-    public class MarketingExecutive : Manager
+    public class MarketingExecutive : Employee
     {
         private double _kilometeresTravelled;
         private double _tourAllowance;
@@ -143,7 +147,11 @@ namespace LitwareLib
         {
             base.CalculateSalary();
             _tourAllowance = 5 * _kilometeresTravelled;
+            PF = 0.1 * GrossSalary;
+            //TDS = 0.18 * GrossSalary;
             GrossSalary = GrossSalary + _telephoneAllowance + _tourAllowance;
+            TDS = 0.18 * GrossSalary;
+            NetSalary = GrossSalary - (PF + TDS);
         }
 
 
