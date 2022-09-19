@@ -1,0 +1,35 @@
+using System;
+using System.Collections;
+using LitwareLib;
+
+namespace EmployeeManagement
+{
+    class Program
+    {
+        static void Main()
+        {
+
+            Console.WriteLine("Enter the number of employees to be entered :");
+            int numberOfEmployees = int.Parse(Console.ReadLine());
+            ArrayList employeeArrayList = new ArrayList();
+
+            for(int i=0;i<numberOfEmployees; i++)
+            {
+                Console.WriteLine("Enter the employee number of Employee {0} below :",i+1);
+                int employeeNumber = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the name of of Employee {0} below :", i + 1);
+                string employeeName = Console.ReadLine();
+                Console.WriteLine("Enter the salary of Employee {0} below :", i + 1);
+                double employeeSalary = double.Parse(Console.ReadLine());
+                Employee emp = new Employee(employeeNumber, employeeName, employeeSalary);
+                employeeArrayList.Add(emp);
+                Console.WriteLine("---------------------------------------------------------");
+            }
+
+            for(int i=0;i<numberOfEmployees;i++)
+            {
+                Console.WriteLine(employeeArrayList[i].ToString());
+            }
+	}
+    }
+}

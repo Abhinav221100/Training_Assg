@@ -1,0 +1,59 @@
+// See https://aka.ms/new-console-template for more information
+using GenericStack;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter the size of the stack below :");
+        int sizeOfStack = int.Parse(Console.ReadLine());
+
+        MyStack<string> stack = new MyStack<string>(sizeOfStack);
+        string choice = null;
+        int option;
+        do
+        {
+            do
+            {
+                Console.WriteLine("Choose one of the Operations from below (Choose a number) :\n" +
+                                  "1. Push\n" +
+                                  "2. Pop\n" +
+                                  "3. Exit\n");
+                option = int.Parse(Console.ReadLine());
+                if (option != 1 && option != 2 && option != 3)
+                {
+                    Console.WriteLine("Enter a Valid option.");
+                }
+                if (option == 3)
+                {
+                    break;
+                }
+            } while (option != 1 && option != 2);
+
+            if (option == 3)
+            {
+                break;
+            }
+
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter value to be pushed onto stack :");
+                    string data =Console.ReadLine();
+                    stack.push(data);
+                    break;
+                case 2:
+                    string value = stack.pop();
+                    Console.WriteLine("The value popped is {0}\n", value);
+                    break;
+                default:
+                    Console.WriteLine("Enter a valid option.");
+                    break;
+            }
+
+        } while (option != 1 || option != 2);
+    }
+}

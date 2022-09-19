@@ -1,0 +1,147 @@
+// See https://aka.ms/new-console-template for more information
+using System;
+using System.Buffers;
+using System.Collections;
+
+namespace EmployeeManagement
+{
+    class Program
+    {
+        static void Main()
+        {
+            List<Employee> employeeList = new List<Employee>();
+            int option;
+            string choice = null;
+            do
+            {
+                Console.WriteLine("Enter the number corresponding to one of the options below : \n" +
+                                  "1.Add a new employee\n" +
+                                  "2.Display the list of employees\n" +
+                                  "3.Total number of employees in the list\n");
+                option = int.Parse(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the employee number of the Employee below :");
+                        int employeeNumber = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the name of the Employee below :");
+                        string employeeName = Console.ReadLine();
+                        Console.WriteLine("Enter the salary of the Employee below :");
+                        double employeeSalary = double.Parse(Console.ReadLine());
+                        Employee emp = new Employee(employeeNumber, employeeName, employeeSalary);
+                        employeeList.Add(emp);
+                        Console.WriteLine("---------------------------------------------------------");
+                        break;
+                    case 2:
+                        foreach(Employee employee in employeeList)
+                        {
+                            Console.WriteLine(employee.ToString());
+                            Console.WriteLine("---------------------------------------------------------");
+                        }
+                        break;
+                    case 3:
+                        Console.WriteLine("The total number of Employees in the list is " + employeeList.Count);
+                        Console.WriteLine("---------------------------------------------------------");
+                        break;
+                    default:
+                        Console.WriteLine("Enter a valid option");
+                        break;
+                }
+                Console.WriteLine("Do you want to continue (Yes/No) : ");
+                choice = Console.ReadLine().ToUpper();
+            } while (choice == "YES");
+        }
+    }
+
+    public class Employee
+    {
+        private int EmpNo;
+        private string EmpName;
+        private double salary;
+        double HRA, TA, DA, PF, TDS;
+        double NetSalary;
+        public double GrossSalary;
+
+        public int empNo
+        {
+            get;
+            set;
+        }
+        public string empName
+        {
+            get;
+            set;
+        }
+
+        public double Salary
+        {
+            get;
+            set;
+        }
+        public Employee(int EmpNo, string EmpName, double salary)
+        {
+            this.EmpNo = EmpNo;
+            this.EmpName = EmpName;
+            Salary = salary;
+        }
+
+        public virtual void CalculateSalary()
+        {
+            if (Salary < 5000)
+            {
+                HRA = 0.1 * Salary;
+                TA = 0.05 * Salary;
+                DA = 0.15 * Salary;
+            }
+            else if (Salary < 10000)
+            {
+                HRA = 0.15 * Salary;
+                TA = 0.1 * Salary;
+                DA = 0.2 * Salary;
+            }
+            else if (Salary < 15000)
+            {
+                HRA = 0.2 * Salary;
+                TA = 0.15 * Salary;
+                DA = 0.25 * Salary;
+            }
+            else if (Salary < 20000)
+            {
+                HRA = 0.25 * Salary;
+                TA = 0.2 * Salary;
+                DA = 0.3 * Salary;
+            }
+            else
+            {
+                HRA = 0.3 * Salary;
+                TA = 0.25 * Salary;
+                DA = 0.35 * Salary;
+            }
+
+            GrossSalary = Salary + HRA + TA + DA;
+            PF = 0.1 * GrossSalary;
+            TDS = 0.18 * GrossSalary;
+            NetSalary = GrossSalary - (PF + TDS);
+        }
+        public void DisplayGrossSalary()
+        {
+            Console.WriteLine("The Gross Salary is {0}", GrossSalary);
+        }
+
+        public void PrintDetailsOfEmployee()
+        {
+            Console.WriteLine("Name of Employee : {0}", EmpName);
+            Console.WriteLine("Employee Number of Employee : {0}", EmpNo);
+            Console.WriteLine("Base Salary of Employee : {0}", Salary);
+            Console.WriteLine("Gross Salary of Employee : {0}", GrossSalary);
+            Console.WriteLine("Net Salary of Employee : {0}", NetSalary);
+        }
+
+        public override string ToString()
+        {
+            return "Employee Name : " + this.EmpName + "," + " Employee Number : " + this.EmpNo + "," + " Employee Salary :" + this.Salary;
+        }
+
+    }
+
+}

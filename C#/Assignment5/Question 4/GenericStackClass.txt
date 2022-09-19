@@ -1,0 +1,80 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GenericStack
+{
+    public class MyStack<T>
+    {
+        public int top;
+        int size;
+        public T[] stack;
+
+        public class StackOverflowException : ApplicationException
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "Buffer Overflow : Stack is full.";
+                }
+            }
+        }
+
+        public class StackUndeflowException : ApplicationException
+        {
+            public override string Message
+            {
+                get
+                {
+                    return "Buffer Underflow : Stack is empty.";
+                }
+            }
+        }
+
+        public MyStack(int size)
+        {
+            this.top = -1;
+            this.size = size;
+            this.stack = new T[size];
+        }
+
+        public void push(T data)
+        {
+            if (top + 1 >= size)
+            {
+                //Console.WriteLine("----------");
+                //Console.WriteLine("WARNING : Buffer Overflow");
+                //Console.WriteLine("----------");
+                //return;
+                throw new StackOverflowException();
+            }
+            top = top + 1;
+            stack[top] = data;
+            Console.WriteLine("----------");
+            Console.WriteLine("Push operation successfull");
+            Console.WriteLine("----------");
+        }
+
+        public T pop()
+        {
+            if (top == -1)
+            {
+                //Console.WriteLine("----------");
+                //Console.WriteLine("WARNING : Buffer Underflow");
+                //Console.WriteLine("----------");
+                //return -99999;
+                throw new StackUndeflowException();
+            }
+            T value = stack[top];
+            top = top - 1;
+            Console.WriteLine("----------");
+            Console.WriteLine("Pop operation successfull");
+            Console.WriteLine("----------");
+            return value;
+        }
+    }
+}

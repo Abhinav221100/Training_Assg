@@ -1,0 +1,131 @@
+// See https://aka.ms/new-console-template for more information
+using System;
+using System.Globalization;
+
+public class Arrays
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter the size of integer array below :");
+        int sizeInt = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the size of string array below :");
+        int sizeString = int.Parse(Console.ReadLine());
+
+        //initializing arrays
+        int[] intArray = new int[sizeInt];
+        string[] strArray = new string[sizeString];
+
+        for(int i = 0; i < sizeInt; i++)
+        {
+            Console.WriteLine("Enter the number to be inserted into the integer array : ");
+            intArray[i] = int.Parse(Console.ReadLine());
+        }
+        for (int i = 0; i < sizeString; i++)
+        {
+            Console.WriteLine("Enter the text to be inserted into the string array : ");
+            strArray[i] = Console.ReadLine();
+        }
+
+        int option;
+        string choice = null;
+
+        do
+        {
+            Console.WriteLine("Choose the number corresponding to one of the operations below :\n" +
+                              "1. Copy\n" +
+                              "2. Sort\n" +
+                              "3. Clear\n" +
+                              "4. Reverse\n");
+            option = int.Parse(Console.ReadLine());
+
+            switch(option)
+            {
+                case 1:
+                    int[] newIntArray = new int[sizeInt];
+                    string[] newStrArray = new string[sizeString];
+                    Array.Copy(intArray, newIntArray, sizeInt);
+                    Array.Copy(strArray, newStrArray, sizeString);
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("The arrays have been copied successfully.");
+                    Console.WriteLine("----------------------------------------------------");
+
+                    Console.WriteLine("Integer array");
+                    foreach (int i in newIntArray)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    Console.WriteLine("String array");
+                    foreach (string s in newStrArray)
+                    {
+                        Console.WriteLine(s);
+                    }
+
+                    break;
+                case 2:
+                    Array.Sort(intArray);
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("The arrays have been sorted successfuly.");
+                    Console.WriteLine("----------------------------------------------------");
+
+                    Console.WriteLine("Integer array");
+                    foreach(int i in intArray)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    Console.WriteLine("String array");
+                    foreach (string s in strArray)
+                    {
+                        Console.WriteLine(s);
+                    }
+
+                    break;
+                case 3:
+                    Array.Clear(intArray);
+                    Array.Clear(strArray);
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("The arrays have been cleared successfuly.");
+                    Console.WriteLine("----------------------------------------------------");
+
+                    Console.WriteLine("Integer array");
+                    foreach (int i in intArray)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    Console.WriteLine("String array");
+                    foreach (string s in strArray)
+                    {
+                        Console.WriteLine(s);
+                    }
+                    break;
+                case 4:
+                    Array.Reverse(intArray);
+                    Array.Reverse(strArray);
+                    Console.WriteLine("----------------------------------------------------");
+                    Console.WriteLine("The arrays have been reversed successfuly.");
+                    Console.WriteLine("----------------------------------------------------");
+
+                    Console.WriteLine("Integer array");
+                    foreach (int i in intArray)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    Console.WriteLine("String array");
+                    foreach (string s in strArray)
+                    {
+                        Console.WriteLine(s);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid option entered.");
+                    break;
+            }
+            Console.WriteLine("Do you want to continue (YES/NO) :");
+            choice = Console.ReadLine().ToUpper();
+
+        } while (choice == "YES");
+    }
+}
