@@ -1,0 +1,150 @@
+using System;
+using System.Collections;
+using System.Data.SqlTypes;
+
+namespace Banking
+{
+    public delegate void UnderBalanceEventHandler(object source, EventArgs args);
+    public delegate void BalanceZeroEventHandler(object source, EventArgs args);
+
+
+    public class HDFC
+    {
+        public double accountNumber;
+        public string customerName;
+        public double balance;
+        public double minimumBalance = 1000;
+        public event UnderBalanceEventHandler UnderBalance;
+        public event BalanceZeroEventHandler BalanceZero;
+
+        public HDFC(double accNumber, string customerName, double balance)
+        {
+            this.accountNumber = accNumber;
+            this.customerName = customerName;
+            this.balance = balance;
+        }
+
+        public void Withdraw(double amount)
+        {
+            this.balance -= amount;
+            if (this.balance < this.minimumBalance)
+            {
+                this.balance += amount;
+                OnUnderBalance();
+                return;
+            }
+            else if (this.balance < amount)
+            {
+                Console.WriteLine("Transaction cannot be continued as balance is insufficient/zero in Account");
+                if (this.balance == 0)
+                {
+                    OnBalanceZero();
+                }
+                return;
+            }
+            else
+            {
+                Console.WriteLine("--------------------------------------");
+                Console.WriteLine("Money has been withdrawn successfully.");
+                Console.WriteLine("--------------------------------------");
+                //if (this.balance == 0)
+                //{
+                //    OnBalanceZero();
+                //}
+                //else if (this.balance < this.minimumBalance)
+                //{
+                //    OnUnderBalance();
+                //}
+                return;
+            }
+        }
+
+        public void Deposit(double amount)
+        {
+            this.balance += amount;
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Money has been deposited successfully.");
+            Console.WriteLine("--------------------------------------");
+            //if (this.balance < this.minimumBalance)
+            //{
+            //    OnUnderBalance();
+            //}
+            //else if (this.balance == 0)
+            //{
+            //    OnBalanceZero();
+            //}
+        }
+
+        public virtual void OnUnderBalance()
+        {
+            if (UnderBalance != null)
+            {
+                UnderBalance(this, EventArgs.Empty);
+            }
+        }
+
+        public virtual void OnBalanceZero()
+        {
+            if (BalanceZero != null)
+            {
+                BalanceZero(this, EventArgs.Empty);
+            }
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine("Enter the account number below : ");
+            int accNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the customer name below : ");
+            string custName = Console.ReadLine();
+            Console.WriteLine("Enter the balance in account below : ");
+            int accBalance = int.Parse(Console.ReadLine());
+
+            HDFC acc1 = new HDFC(accNumber, custName, accBalance);//publisher
+            MinBalance minBal = new MinBalance();//subscriber
+            ZeroBalance zeroBal = new ZeroBalance();//subscriber
+
+            acc1.UnderBalance += minBal.OnUnderBalance;
+            acc1.BalanceZero += zeroBal.OnBalanceZero;
+
+
+            Console.WriteLine("Choose one of the operations below :\n" +
+                              "1.Withdraw\n" +
+                              "2.Deposit\n");
+            int option = int.Parse(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter the amount to be withdrawn :");
+                    int amountToBeWithdrawn = int.Parse(Console.ReadLine());
+                    acc1.Withdraw(amountToBeWithdrawn);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter the amount to be deposited :");
+                    int amountToBeDeposited = int.Parse(Console.ReadLine());
+                    acc1.Deposit(amountToBeDeposited);
+                    break;
+            }
+        }
+
+    }
+
+    public class MinBalance
+    {
+        public void OnUnderBalance(object source, EventArgs args)
+        {
+            Console.WriteLine("Transaction cannot be continued below specified limit of Rs.-1000");
+        }
+    }
+
+    public class ZeroBalance
+    {
+        public void OnBalanceZero(object source, EventArgs args)
+        {
+            Console.WriteLine("Transaction cannot be continued as balance is insufficient/zero in Account");
+        }
+    }
+}

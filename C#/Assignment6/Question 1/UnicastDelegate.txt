@@ -1,0 +1,100 @@
+using System;
+
+namespace UnicastDelegate
+{
+    public delegate void EmployeeDelegate();
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine("Enter the number of Managers to be entered :");
+            int numOfManagers = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numOfManagers; i++)
+            {
+                Console.WriteLine("Enter the Manager's employee number below :");
+                int employeeNumber = int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter the name of the Manager below :");
+                string employeeName = Console.ReadLine();
+                Console.WriteLine("Enter the salary below :");
+                double employeeSalary = double.Parse(Console.ReadLine());
+                Manager manager1 = new Manager(employeeNumber, employeeName, employeeSalary);
+                EmployeeDelegate ed = new EmployeeDelegate(manager1.PrintDetailsOfEmployee);
+                ed();
+
+
+            }
+        }
+        public class Employee
+        {
+            private int EmpNo;
+            private string EmpName;
+            private double salary;
+            double HRA, TA, DA, PF, TDS;
+            double NetSalary;
+            public double GrossSalary;
+
+            public int empNo
+            {
+                get;
+                set;
+            }
+            public string empName
+            {
+                get;
+                set;
+            }
+
+            public double Salary
+            {
+                get;
+                set;
+            }
+            public Employee(int EmpNo, string EmpName, double salary)
+            {
+                this.EmpNo = EmpNo;
+                this.EmpName = EmpName;
+                Salary = salary;
+            }
+
+            public void PrintDetailsOfEmployee()
+            {
+                Console.WriteLine("Name of Employee : {0}", EmpName);
+                Console.WriteLine("Employee Number of Employee : {0}", EmpNo);
+                Console.WriteLine("Base Salary of Employee : {0}", Salary);
+                Console.WriteLine("---------------------------------------------");
+            }
+
+            public override string ToString()
+            {
+                return "Employee Name : " + this.EmpName + "," + " Employee Number : " + this.EmpNo + "," + " Employee Salary :" + this.Salary;
+            }
+
+        }
+
+        public class Manager : Employee
+        {
+            private double _petrolAllowance;
+            private double _foodAllowance;
+            private double _otherAllowance;
+
+            public Manager(int EmpNo, string EmpName, double salary) : base(EmpNo, EmpName, salary)
+            {
+
+            }
+        }
+
+        public class MarketingExecutive : Manager
+        {
+            private double _kilometeresTravelled;
+            private double _tourAllowance;
+            private int _telephoneAllowance = 1000;
+
+            public MarketingExecutive(int EmpNo, string EmpName, double salary, double kilometeresTravelled) : base(EmpNo, EmpName, salary)
+            {
+                this._kilometeresTravelled = kilometeresTravelled;
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+using Microsoft.VisualBasic.FileIO;
+using System;
+
+namespace MulticastDelegate
+{
+    public delegate void EmployeeDelegate();
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine("Enter the Manager's employee number below :");
+            int ManagerNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the name of the Manager below :");
+            string ManagerName = Console.ReadLine();
+            Console.WriteLine("Enter the salary below :");
+            double ManagerSalary = double.Parse(Console.ReadLine());
+            Employee manager = new Employee(ManagerNumber, ManagerName, ManagerSalary);
+
+
+            Console.WriteLine("Enter the Marketing Executive's employee number below :");
+            int MarketingExecutiveNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the name of the Marketing Executive below :");
+            string MarketingExecutiveName = Console.ReadLine();
+            Console.WriteLine("Enter the salary below :");
+            double MarketingExecutiveSalary = double.Parse(Console.ReadLine());
+            Employee marketingExecutive = new Employee(MarketingExecutiveNumber, MarketingExecutiveName, MarketingExecutiveSalary);
+
+
+            EmployeeDelegate ed = new EmployeeDelegate(manager.PrintDetailsOfManager);
+            ed += marketingExecutive.PrintDetailsOfMarketingExecutive;
+
+            ed();
+
+        }
+        public class Employee
+        {
+            private int EmpNo;
+            private string EmpName;
+            private double salary;
+            double HRA, TA, DA, PF, TDS;
+
+
+            public int empNo
+            {
+                get;
+                set;
+            }
+            public string empName
+            {
+                get;
+                set;
+            }
+
+            public double Salary
+            {
+                get;
+                set;
+            }
+            public Employee(int EmpNo, string EmpName, double salary)
+            {
+                this.EmpNo = EmpNo;
+                this.EmpName = EmpName;
+                this.Salary = salary;
+            }
+
+            public void PrintDetailsOfManager()
+            {
+                Console.WriteLine("Name of Manager : {0}", EmpName);
+                Console.WriteLine("Employee Number of Manager : {0}", EmpNo);
+                Console.WriteLine("Base Salary of Manager : {0}", Salary);
+                Console.WriteLine("---------------------------------------------");
+            }
+
+            public void PrintDetailsOfMarketingExecutive()
+            {
+                Console.WriteLine("Name of Marketing Executive : {0}", EmpName);
+                Console.WriteLine("Employee Number of Marketing Executive : {0}", EmpNo);
+                Console.WriteLine("Base Salary of Marketing Executive : {0}", Salary);
+                Console.WriteLine("---------------------------------------------");
+            }
+
+            public override string ToString()
+            {
+                return "Employee Name : " + this.EmpName + "," + " Employee Number : " + this.EmpNo + "," + " Employee Salary :" + this.Salary;
+            }
+
+        }
+    }
+}
