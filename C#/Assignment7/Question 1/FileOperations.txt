@@ -1,0 +1,69 @@
+using System;
+using System.IO;
+
+namespace FilesOperation
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            string filePath = @"C:\Users\Toshiba\Desktop\Capgemini Docs\C#";
+           
+            string[] dirs = Directory.GetDirectories(filePath);
+
+            Console.WriteLine("\nListing sub-directories from Path {0}.....",filePath);
+            Console.WriteLine("-------------------------------------------\n");
+            //Displays Sub Directories at the topLevel
+            Console.WriteLine("{0} folder have been found....\n",dirs.Length);
+            foreach (string dir in dirs)
+            {
+                Console.WriteLine(dir);
+            }
+            Console.WriteLine("-------------------------------------------\n");
+
+            //--------------------------------------------------------------------
+
+            string newPath = @"C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment7\test.txt";
+
+            FileStream newFile;
+            //Checks for existence of file and creates new file if doesn't exist.
+            if(!(File.Exists(newPath)))
+            {
+                newFile = File.Create(newPath);
+                Console.WriteLine("\nNew file has been created at {0}\n",newPath);
+                Console.WriteLine("-------------------------------------------\n");
+                newFile.Close();
+            }
+
+            string[] files = Directory.GetFiles(filePath,"*",SearchOption.TopDirectoryOnly);
+
+            Console.WriteLine("\nListing files from Path {0}.....", filePath);
+            Console.WriteLine("-------------------------------------------\n");
+            //Displays files at the topLevel
+            Console.WriteLine("{0} files have been found...\n",files.Length);
+            foreach (string file in files)
+            {
+                Console.WriteLine(file);
+            }
+            Console.WriteLine("-------------------------------------------\n");
+
+            //Write some text to the newly created file
+            FileInfo file1 = new FileInfo(newPath);
+            StreamWriter testWriter = file1.CreateText();
+            testWriter.WriteLine("This is a line written to test.txt\n");
+            Console.WriteLine("-------------------------------------------\n");
+            testWriter.Close();
+
+
+
+            //Deletes file if exists
+            if (File.Exists(newPath))
+            {
+                File.Delete(newPath);
+                Console.WriteLine("\nFile has been deleted at {0}\n",newPath);
+                Console.WriteLine("-------------------------------------------\n");
+            }
+
+        }
+    }
+}

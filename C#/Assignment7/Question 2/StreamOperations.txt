@@ -1,0 +1,69 @@
+using System;
+using System.Collections;
+using System.IO;
+
+namespace StreamOperations
+{
+    public class HDFC
+    {
+        public double accountNumber;
+        public string customerName;
+        public double balance;
+        public double minimumBalance = 1000;
+
+        public HDFC(double accNumber, string customerName, double balance)
+        {
+            this.accountNumber = accNumber;
+            this.customerName = customerName;
+            this.balance = balance;
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            Console.WriteLine("Enter the account number below : ");
+            int accNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the customer name below : ");
+            string custName = Console.ReadLine();
+            Console.WriteLine("Enter the balance in account below : ");
+            int accBalance = int.Parse(Console.ReadLine());
+
+            HDFC account = new HDFC(accNumber, custName, accBalance);
+
+            string filePath = @"C:\Users\Toshiba\Desktop\Capgemini Docs\C#\Assignment7\AccountDetail.txt";
+            int mode;
+            if (!(File.Exists(filePath)))
+            {
+                mode = 1;
+            }
+            else
+            {
+                mode = 6;
+            }
+
+            FileStream stream = new FileStream(filePath, (FileMode)mode);
+
+            using (StreamWriter accWriter = new StreamWriter(stream))
+            {
+                accWriter.Write("Account Number of {0} is {1} and has a current balance of {2}\n",custName,accNumber,accBalance);
+            }
+            Console.WriteLine("\nWrite Complete");
+            Console.WriteLine("-----------------------------------------------------\n");
+            using (StreamReader accReader = new StreamReader(filePath))
+            {
+                string line;
+                while((line = accReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            Console.WriteLine("\nRead Complete");
+            Console.WriteLine("-----------------------------------------------------\n");
+
+            stream.Close();
+
+        }
+    }
+}
